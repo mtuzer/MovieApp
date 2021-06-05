@@ -3,9 +3,9 @@
 # MovieApp
 *This app shows a list of popular movies fetched from [The Movie Database (TMDB) API](https://developers.themoviedb.org/3/getting-started/introduction) and shows the detail of the movie when selected.*
 
-<p align="row">
-<img src= "" width="400" >
-<img src= "" width="400" >
+<p align="center">
+<img src= "https://raw.githubusercontent.com/mtuzer/MovieApp/master/Main.png" width="200" >
+<img src= "https://raw.githubusercontent.com/mtuzer/MovieApp/master/Detail.png" width="200" >
 </p>
 
 ## Features
