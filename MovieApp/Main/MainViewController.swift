@@ -131,7 +131,7 @@ extension MainViewController: MainInteractorDelegate {
                 self.showError(withMessage: message)
             case .refreshFavorites(let tuple):
                 self.movieViewModels = tuple.0
-                let indexPath = IndexPath(row: tuple.1, section: 0)//IndexPath(item: index, section: 0)
+                let indexPath = IndexPath(row: tuple.1, section: 0)
                 self.collectionView.reloadItems(at: [indexPath])
             }
         }
