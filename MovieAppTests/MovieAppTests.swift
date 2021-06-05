@@ -143,13 +143,16 @@ class MovieAppTests: XCTestCase {
     func testNavigationFromMainToDetailFlow() throws {
         // MARK: Tapping Movie From Main Controller
         // given:
-        let id = 179
+        let index = 1
+        let popularMovieResponse = mockMovieResponse(page: 0)
+        mockNetworkService.mockPopularMovieResponse = .success(popularMovieResponse)
+        mockMainInteractor.load()
         
         // when:
-        mockMainController.movieTapped(withId: id, interactor: mockMainInteractor)
+        mockMainController.movieTapped(withIndex: index, interactor: mockMainInteractor)
         
         // then:
-        XCTAssertEqual(mockMainController.movieId, id)
+        XCTAssertEqual(mockMainController.movieId, try popularMovieResponse.results.element(at: index).id)
     }
     
     // MARK: Detail Tests

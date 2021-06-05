@@ -185,7 +185,7 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDelegate
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        mainInteractor.movieSelected(withId: movieViewModels[indexPath.row].id)
+        mainInteractor.movieSelected(atIndex: indexPath.row)
     }
     
     func collectionView(_ collectionView: UICollectionView,

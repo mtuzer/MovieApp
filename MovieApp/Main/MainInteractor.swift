@@ -12,7 +12,7 @@ protocol MainInteractable: AnyObject {
     var delegate: MainInteractorDelegate? { get set }
     func load()                                  // initial load to fill screen content
     func loadMoreTapped()                        // respond to the load more button
-    func movieSelected(withId id: Int)           // respond to movie selection
+    func movieSelected(atIndex index: Int)       // respond to movie selection
     func searchMovie(withTitle title: String)    // respond to search query
 }
 
@@ -56,9 +56,12 @@ class MainInteractor: MainInteractable {
         fetchMovies()
     }
     
-    func movieSelected(withId id: Int) {
-        selectedIndex = id
-        delegate?.navigateToMovieDetail(withId: id)
+    func movieSelected(atIndex index: Int) {
+        selectedIndex = index
+        if let index = selectedIndex {
+            let id = filteredMovieList[index].id
+            delegate?.navigateToMovieDetail(withId: id)
+        }
     }
     
     func searchMovie(withTitle title: String) {
@@ -109,7 +112,7 @@ class MainInteractor: MainInteractable {
 // MARK: Response to Change in Favorite Selection in Detail Screen
 extension MainInteractor: MovieFavoriteDelegate {
     func movieFavorited() { // update cell due to the change
-        if let index = filteredMovieList.firstIndex(where: { $0.id == selectedIndex }) {
+        if let index = selectedIndex {
             let movieViewModel = filteredMovieList.map { MovieViewModel.from(movie: $0) } // update favorite in ViewModel
             notifyController(.refreshFavorites((movieViewModel, index)))
         }

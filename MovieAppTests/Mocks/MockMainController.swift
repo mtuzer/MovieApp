@@ -20,7 +20,7 @@ class MockMainController: MainInteractorDelegate {
         movieId = id
     }
     
-    func movieTapped(withId id: Int, interactor: MainInteractor) {
-        interactor.movieSelected(withId: id)
+    func movieTapped(withIndex index: Int, interactor: MainInteractor) {
+        interactor.movieSelected(atIndex: index)
     }
 }
