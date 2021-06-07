@@ -94,7 +94,7 @@ class MovieAppTests: XCTestCase {
         case .showMovies(let viewModel):
             XCTAssertEqual(viewModel.count, 4)
         default:
-            XCTFail("The output must be show new movies.")
+            XCTFail("The output must show movies.")
         }
     }
     
